@@ -20,11 +20,12 @@ vector<int> twoSum_1(vector<int>& nums, int target) {
 
 // Method 2: Using hashmap or map std | T: O(n) | S: O(n)
 vector<int> twoSum_2(vector<int>& nums, int target) {
-    map<int, int> m;   // endResult -> { {3: 0}, {2: 1}, {4: 3} }
+    map<int, int> m;   // endResult -> { {3, 0}, {2, 1}, {4, 3} }
     int comp;  // complementary number
     for(int i=0; i<nums.size(); i++){
         comp = target-nums[i];
-        if(m.find(comp) != m.end())  // map.find() returns An iterator to the element, if an element with specified key is found, or map::end otherwise.
+        // map.find() returns An iterator to the element, if an element with specified key is found, or map::end otherwise.
+        if(m.find(comp) != m.end())
             return {m[comp], i};
         else
             m[nums[i]] = i;
