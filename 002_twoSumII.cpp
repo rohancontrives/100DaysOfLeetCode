@@ -6,13 +6,15 @@ Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We retu
 
 #include <iostream>
 #include <vector>
+// #include <algorithm>  // for sort()
 using namespace std;
 
 // T: O(n) | S: O(1)
-vector<int> twoSum(vector<int>& numbers, int target) {
-    int l = 0, r = numbers.size()-1, sum;
+vector<int> twoSum(vector<int>& arr, int target) {
+    // sort(arr.begin(), arr.end());  // in case of unsorted array; T: O(nlog(n))
+    int l = 0, r = arr.size()-1, sum;
     while(true){
-        sum = numbers[l] + numbers[r];
+        sum = arr[l] + arr[r];
         if (sum == target)
             return {++l, ++r};  // OR: vector<int>{++l,++r};
         else if(sum > target)
