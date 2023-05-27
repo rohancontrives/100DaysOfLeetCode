@@ -24,7 +24,7 @@ vector<long long> lcmAndGcd(long long A , long long B) {
     //     if(A%H==0 && B%H==0) break;
     // }
     // Alternate: Euclidean algorithm: gcd(a, b) = gcd(a-b, b) = gcd(a%b, b); a>b.
-    // Time complexity: log of min(a,b) to the base φ.
+    // Time complexity: log of min(a,b) to the base φ, where φ is the golden ratio. φ = (1+√5)/2 = 1.6180
     while(A>0 && B>0){
         (A>B)? A %= B: B %= A;
     }
