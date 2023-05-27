@@ -1,4 +1,4 @@
-// LeetCode 1
+// #1 Two Sum
 
 #include<iostream>
 #include<vector>
