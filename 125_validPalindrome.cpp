@@ -9,24 +9,35 @@ Alphanumeric characters include letters and numbers.
 #include <string>
 using namespace std;
 
-bool isPalindrome(string s){
-    string str;
+// // Method1: O(n) time | O(n) space (b/c of string str).
+// bool isPalindrome(string s){
+//     string str;
+//     // filter or sieve the string
+//     for(char ch: s){
+//         // check for alphanumeric
+//         // ASCII: 0-9 -> 48-57 | A-Z -> 65-90 | a-z -> 97-122;
+//         if( (ch>='0' && ch<='9') || (ch>='A' && ch<='Z') || (ch>='a' && ch<='z')){
+//             if( (ch>='A') && (ch<='Z')) str += (ch+32);  // convert to lower | 32 = 'a' - 'A'
+//             else str += ch;
+//         }
+//     }
+//     // check for palindrom => str[start] == str[end] for every character.
+//     int start=0, end=str.size()-1;
+//     while(start<end){
+//         if(str[start] != str[end]) return false;
+//         start++; end--;
+//     }
+//     return true;
+// }
 
-    // filter or sieve the string
-    for(char ch: s){
-        // check for alphanumeric
-        // ASCII: 0-9 -> 48-57 | A-Z -> 65-90 | a-z -> 97-122;
-        if( (ch>='0' && ch<='9') || (ch>='A' && ch<='Z') || (ch>='a' && ch<='z')){
-            if( (ch>='A') && (ch<='Z')) str += (ch+32);  // convert to lower | 32 = 'a' - 'A'
-            else str += ch;
-        }
-    }
-
-    // check for palindrom => str[start] == str[end] for every character.
-    int start=0, end=str.size()-1;
-    while(start<end){
-        if(str[start] != str[end]) return false;
-        start++; end--;
+// Method2: O(n^2) time | O(1) space.
+bool isPalindrome(string s) {
+    if(s.size()==1) return true;
+    int start = 0, end = s.size()-1;
+    while(start < end){
+        while(start < end && !isalnum(s[start])) start++;
+        while(start < end && !isalnum(s[end]) ) end--;
+        if(tolower(s[start++]) != tolower(s[end--])) return false;
     }
     return true;
 }
